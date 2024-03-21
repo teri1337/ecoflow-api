@@ -20,7 +20,7 @@ timestamp=`echo $(date +"%s%3N")`
 # str for generating of the signiture
 str="sn=${sn}&accessKey=${accesskey}&nonce=${nonce}&timestamp=${timestamp}"
 
-sign=`echo -n "${str}" | openssl dgst -sha256 -hmac "${secretkey}" -binary | od -An -v -tx1 | tr -d ' \n'`
+sign=`/bin/echo -n "${str}" | openssl dgst -sha256 -hmac "${secretkey}" -binary | od -An -v -tx1 | tr -d ' \n'`
 
 
 curl -X GET "${URL}${QuotaPath}?sn=${sn}" \
